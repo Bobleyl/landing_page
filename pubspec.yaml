@@ -21,7 +21,14 @@ flutter:
 
   uses-material-design: true
 
+  fonts:
+    - family:  MyFlutterApp
+      fonts:
+        - asset: assets/fonts/MyFlutterApp.ttf
+
+
   assets:
     - assets/cover.png
     - assets/logo_appbar.png
     - assets/youtube_panel.png
+

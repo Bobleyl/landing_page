@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
+import 'my_flutter_app_icons.dart' as CustomIcons;
 
+import 'responsive_widget.dart';
 import 'web_scrollbar.dart';
 
 class HomePage extends StatefulWidget {
@@ -71,6 +74,7 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'About',
                               style: TextStyle(
+                                fontSize: 20,
                                 color: _isHovering[0]
                                     ? Colors.blue[200]
                                     : Colors.white,
@@ -107,6 +111,7 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'Blog',
                               style: TextStyle(
+                                fontSize: 20,
                                 color: _isHovering[1]
                                     ? Colors.blue[200]
                                     : Colors.white,
@@ -143,6 +148,7 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'Courses',
                               style: TextStyle(
+                                fontSize: 20,
                                 color: _isHovering[2]
                                     ? Colors.blue[200]
                                     : Colors.white,
@@ -179,6 +185,7 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'Contact',
                               style: TextStyle(
+                                fontSize: 20,
                                 color: _isHovering[3]
                                     ? Colors.blue[200]
                                     : Colors.white,
@@ -219,44 +226,154 @@ class _HomePageState extends State<HomePage> {
           physics: ClampingScrollPhysics(),
           child: Column(
             children: [
-              Stack(
-                children: [
-                  Container(
-                    child: SizedBox(
-                      height: screenSize.height * 0.65,
-                      width: screenSize.width,
-                      child: Image.asset(
-                        'assets/cover.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Center(
-                    heightFactor: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: screenSize.height * 0.67,
-                        left: screenSize.width / 5,
-                        right: screenSize.width / 5,
-                      ),
-                      child: MaterialButton(
-                        child: Image.asset(
-                          "assets/youtube_panel.png",
-                          height: 150,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ],
+              HomeInfo(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
               ),
-              Container(
-                height: 500,
-                child: Text("Test"),
-              )
+              SocialInfo(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class HomeInfo extends StatelessWidget {
+  const HomeInfo({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    final profileData = Stack(
+      children: [
+        Container(
+          child: SizedBox(
+            height: screenSize.height * 0.65,
+            width: screenSize.width,
+            child: Image.asset(
+              'assets/cover.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ],
+    );
+
+    return ResponsiveWidget(
+      largeScreen: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[profileData],
+      ),
+      smallScreen: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[profileData],
+      ),
+    );
+  }
+}
+
+class NavButton extends StatelessWidget {
+  final text;
+  final onPressed;
+  final Color color;
+
+  const NavButton(
+      {Key key,
+      @required this.text,
+      @required this.onPressed,
+      this.color = Colors.orange})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlineButton(
+      child: Text(text),
+      borderSide: BorderSide(
+        color: color,
+      ),
+      onPressed: onPressed,
+      highlightedBorderColor: color,
+    );
+  }
+}
+
+class SocialInfo extends StatelessWidget {
+  List<Widget> socialMediaWidgets() {
+    return [
+      IconButton(
+        icon: Icon(
+          CustomIcons.MyFlutterApp.github_squared,
+          color: Color(0xff8c53ff),
+        ),
+        onPressed: () {
+          html.window.open("https://github.com/Bobleyl", "Github");
+        },
+      ),
+      IconButton(
+        icon: Icon(
+          CustomIcons.MyFlutterApp.twitter_squared,
+          color: Color(0xff8c53ff),
+        ),
+        onPressed: () {
+          html.window.open("https://twitter.com/bleyldev", "Twitter");
+        },
+      ),
+      IconButton(
+        icon: Icon(
+          CustomIcons.MyFlutterApp.youtube_squared,
+          color: Color(0xff8c53ff),
+        ),
+        onPressed: () {
+          html.window.open("https://www.youtube.com/c/BleylDev", "Youtube");
+        },
+      ),
+      IconButton(
+        icon: Icon(
+          CustomIcons.MyFlutterApp.medium,
+          color: Color(0xff8c53ff),
+        ),
+        onPressed: () {
+          html.window.open("https://medium.com/@bleyldev", "Medium");
+        },
+      ),
+    ];
+  }
+
+  Widget copyRightText() => Padding(
+        padding: EdgeInsets.only(
+          right: 20,
+        ),
+        child: Text(
+          "Bleyl Dev ©️2020",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveWidget(
+      largeScreen: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: socialMediaWidgets(),
+          ),
+          copyRightText(),
+        ],
+      ),
+      smallScreen: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          ...socialMediaWidgets(),
+          copyRightText(),
+        ],
       ),
     );
   }
