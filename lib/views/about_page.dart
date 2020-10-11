@@ -2,7 +2,6 @@ import 'package:bleyldev_website/views/widgets/social_info.dart';
 import 'package:flutter/material.dart';
 
 import '../util/responsive_widget.dart';
-import '../util/web_scrollbar.dart';
 
 class AboutPage extends StatefulWidget {
   AboutPage({Key key}) : super(key: key);
