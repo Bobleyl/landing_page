@@ -69,7 +69,9 @@ class _AboutPageState extends State<AboutPage> {
                                 : _isHovering[0] = false;
                           });
                         },
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/about');
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -118,7 +120,9 @@ class _AboutPageState extends State<AboutPage> {
                                 : _isHovering[1] = false;
                           });
                         },
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/blog');
+                        },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -155,7 +159,9 @@ class _AboutPageState extends State<AboutPage> {
                                 : _isHovering[2] = false;
                           });
                         },
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/course');
+                        },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -192,7 +198,9 @@ class _AboutPageState extends State<AboutPage> {
                                 : _isHovering[3] = false;
                           });
                         },
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/contact');
+                        },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [

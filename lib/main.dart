@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'views/about_page.dart';
+import 'views/blog_page.dart';
+import 'views/contact_page.dart';
+import 'views/course_page.dart';
 import 'views/home_page.dart';
 
 void main() {
@@ -20,6 +23,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => HomePage(),
         '/about': (context) => AboutPage(),
+        '/blog': (context) => BlogPage(),
+        '/course': (context) => CoursePage(),
+        '/contact': (context) => ContactPage(),
       },
       debugShowCheckedModeBanner: false,
       home: HomePage(),
