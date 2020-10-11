@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'views/about_page.dart';
 import 'views/home_page.dart';
 
 void main() {
@@ -7,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  static const String route = '/home';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         bottomAppBarColor: Color(0xff8c53ff),
       ),
+      initialRoute: '/',
+      routes: {
+        '/home': (context) => HomePage(),
+        '/about': (context) => AboutPage(),
+      },
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
