@@ -5,10 +5,6 @@
 ///         Author:    Dave Gandy
 ///         License:   SIL ()
 ///         Homepage:  http://fortawesome.github.com/Font-Awesome/
-/// * RPG Awesome, Copyright (c) 2014, Daniela Howe
-///         Author:    Daniela Howe & Ivan Montiel
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://nagoshiashumari.github.io/Rpg-Awesome/
 /// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
 ///         Author:    Dave Gandy
 ///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
@@ -22,10 +18,6 @@ class MyFlutterApp {
   static const _kFontFam = 'MyFlutterApp';
   static const _kFontPkg = null;
 
-  static const IconData logout =
-      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData castle_emblem =
-      IconData(0xe95d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData youtube_squared =
       IconData(0xf166, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData medium =
@@ -36,4 +28,6 @@ class MyFlutterApp {
       IconData(0xf304, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData facebook_squared =
       IconData(0xf308, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData discord =
+      IconData(0xf392, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
