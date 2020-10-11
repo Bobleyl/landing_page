@@ -13,7 +13,10 @@ class SocialInfo extends StatelessWidget {
           color: Color(0xff8c53ff),
         ),
         onPressed: () {
-          html.window.open("https://github.com/Bobleyl", "Github");
+          html.window.open(
+            "https://github.com/Bobleyl",
+            "Github",
+          );
         },
       ),
       IconButton(
@@ -22,7 +25,10 @@ class SocialInfo extends StatelessWidget {
           color: Color(0xff8c53ff),
         ),
         onPressed: () {
-          html.window.open("https://twitter.com/bleyldev", "Twitter");
+          html.window.open(
+            "https://twitter.com/bleyldev",
+            "Twitter",
+          );
         },
       ),
       IconButton(
@@ -31,7 +37,10 @@ class SocialInfo extends StatelessWidget {
           color: Color(0xff8c53ff),
         ),
         onPressed: () {
-          html.window.open("https://www.youtube.com/c/BleylDev", "Youtube");
+          html.window.open(
+            "https://www.youtube.com/c/BleylDev?sub_confirmation=1",
+            "Youtube",
+          );
         },
       ),
       IconButton(
@@ -40,7 +49,10 @@ class SocialInfo extends StatelessWidget {
           color: Color(0xff8c53ff),
         ),
         onPressed: () {
-          html.window.open("https://medium.com/@bleyldev", "Medium");
+          html.window.open(
+            "https://medium.com/@bleyldev",
+            "Medium",
+          );
         },
       ),
       IconButton(
@@ -49,7 +61,10 @@ class SocialInfo extends StatelessWidget {
           color: Color(0xff8c53ff),
         ),
         onPressed: () {
-          html.window.open("https://discord.gg/aUQj87U", "Discord");
+          html.window.open(
+            "https://discord.gg/aUQj87U",
+            "Discord",
+          );
         },
       ),
     ];
