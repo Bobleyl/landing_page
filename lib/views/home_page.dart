@@ -320,10 +320,27 @@ class HomeInfo extends StatelessWidget {
           )
         ],
       ),
-      smallScreen: Row(
+      smallScreen: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[profileDataSmall],
+        children: <Widget>[
+          profileDataSmall,
+          SizedBox(
+            height: 50,
+          ),
+          MaterialButton(
+            onPressed: () {
+              html.window.open(
+                "https://www.youtube.com/c/BleylDev?sub_confirmation=1",
+                "Youtube",
+              );
+            },
+            child: Image.asset("assets/youtube_panel.png"),
+          ),
+          SizedBox(
+            height: 50,
+          ),
+        ],
       ),
     );
   }
