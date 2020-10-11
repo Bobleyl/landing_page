@@ -1,3 +1,4 @@
+import 'package:bleyldev_website/views/posts/flutter_developer_article.dart';
 import 'package:flutter/material.dart';
 
 import 'views/about_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/blog': (context) => BlogPage(),
         '/course': (context) => CoursePage(),
         '/contact': (context) => ContactPage(),
+        '/FlutterDeveloperArticle': (context) => FlutterDeveloperArticle(),
       },
       debugShowCheckedModeBanner: false,
       home: HomePage(),
