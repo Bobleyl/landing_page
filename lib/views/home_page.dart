@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
-import 'my_flutter_app_icons.dart' as CustomIcons;
+import '../util/my_flutter_app_icons.dart' as CustomIcons;
 
-import 'responsive_widget.dart';
-import 'web_scrollbar.dart';
+import '../util/responsive_widget.dart';
+import '../util/web_scrollbar.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
