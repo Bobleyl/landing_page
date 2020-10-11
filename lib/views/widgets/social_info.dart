@@ -43,6 +43,15 @@ class SocialInfo extends StatelessWidget {
           html.window.open("https://medium.com/@bleyldev", "Medium");
         },
       ),
+      IconButton(
+        icon: Icon(
+          CustomIcons.MyFlutterApp.discord,
+          color: Color(0xff8c53ff),
+        ),
+        onPressed: () {
+          html.window.open("https://discord.gg/aUQj87U", "Discord");
+        },
+      ),
     ];
   }
 

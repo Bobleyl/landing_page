@@ -38,6 +38,7 @@ class _AboutPageState extends State<AboutPage> {
         : 1;
 
     return Scaffold(
+      backgroundColor: Color(0xff543199),
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 1000),
@@ -71,7 +72,7 @@ class _AboutPageState extends State<AboutPage> {
                         onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Padding(
@@ -87,8 +88,8 @@ class _AboutPageState extends State<AboutPage> {
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: _isHovering[0]
-                                        ? Colors.blue
-                                        : Colors.black,
+                                        ? Colors.black
+                                        : Colors.white,
                                   ),
                                 ),
                                 SizedBox(height: 5),
@@ -125,8 +126,9 @@ class _AboutPageState extends State<AboutPage> {
                               'Blog',
                               style: TextStyle(
                                 fontSize: 20,
-                                color:
-                                    _isHovering[1] ? Colors.blue : Colors.black,
+                                color: _isHovering[1]
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
                             ),
                             SizedBox(height: 5),
@@ -161,8 +163,9 @@ class _AboutPageState extends State<AboutPage> {
                               'Courses',
                               style: TextStyle(
                                 fontSize: 20,
-                                color:
-                                    _isHovering[2] ? Colors.blue : Colors.black,
+                                color: _isHovering[2]
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
                             ),
                             SizedBox(height: 5),
@@ -197,8 +200,9 @@ class _AboutPageState extends State<AboutPage> {
                               'Contact',
                               style: TextStyle(
                                 fontSize: 20,
-                                color:
-                                    _isHovering[3] ? Colors.blue : Colors.black,
+                                color: _isHovering[3]
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
                             ),
                             SizedBox(height: 5),
@@ -256,13 +260,17 @@ class AboutInfo extends StatelessWidget {
           children: [
             Text(
               "Hi, I'm ",
-              style: TextStyle(fontSize: 32),
+              style: TextStyle(
+                fontSize: 32,
+                color: Colors.white,
+              ),
             ),
             Text(
               "Bo!",
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ],
@@ -294,20 +302,27 @@ class AboutInfo extends StatelessWidget {
           sure to join our discord!  Connect with other developers and get quick 
           Flutter help when you need it.  Link is in footer at bottom of webpage 😉
           """,
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
         SizedBox(height: screenSize.height / 10),
         Row(
           children: [
             Text(
               "About ",
-              style: TextStyle(fontSize: 32),
+              style: TextStyle(
+                fontSize: 32,
+                color: Colors.white,
+              ),
             ),
             Text(
               "Bleyl Dev",
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ],
@@ -329,7 +344,10 @@ class AboutInfo extends StatelessWidget {
         potentially be a moderator and help out with handling Flutter and Dart
         related questions from the community.
         """,
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
       ],
     );
