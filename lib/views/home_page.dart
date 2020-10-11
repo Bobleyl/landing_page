@@ -1,7 +1,10 @@
 import 'package:bleyldev_website/views/widgets/social_info.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../util/responsive_widget.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -97,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / 40),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -136,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / 40),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -175,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / 40),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -229,9 +232,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             HomeInfo(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.2,
-            ),
             SocialInfo(),
           ],
         ),
@@ -250,11 +250,38 @@ class HomeInfo extends StatelessWidget {
       children: [
         Container(
           child: SizedBox(
-            height: screenSize.height * 0.65,
             width: screenSize.width,
             child: Image.asset(
-              'assets/cover.png',
+              'assets/home_banner_tall.png',
               fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Positioned(
+          right: 75,
+          bottom: 150,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(5.0),
+              border: Border.all(color: Colors.black),
+            ),
+            child: MaterialButton(
+              onPressed: () {
+                html.window.open(
+                  "https://www.youtube.com/c/BleylDev?sub_confirmation=1",
+                  "Youtube",
+                );
+              },
+              child: Center(
+                child: Text(
+                  "Join the Bleyl Dev Community!",
+                  style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontSize: 35,
+                  ),
+                ),
+              ),
             ),
           ),
         ),

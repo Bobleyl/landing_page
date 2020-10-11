@@ -102,7 +102,7 @@ class _ContactPageState extends State<ContactPage> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / 40),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -141,7 +141,7 @@ class _ContactPageState extends State<ContactPage> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / 40),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -180,7 +180,7 @@ class _ContactPageState extends State<ContactPage> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / 40),
                       InkWell(
                         onHover: (value) {
                           setState(() {

@@ -31,6 +31,8 @@ flutter:
 
   assets:
     - assets/cover.png
+    - assets/home_banner.png
+    - assets/home_banner_tall.png
     - assets/logo_appbar.png
     - assets/youtube_panel.png
     - assets/profile.jpg
