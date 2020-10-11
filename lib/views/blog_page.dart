@@ -42,197 +42,204 @@ class _BlogPageState extends State<BlogPage> {
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 1000),
-        child: Container(
-          color: Theme.of(context).bottomAppBarColor.withOpacity(_opacity),
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              children: [
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/');
-                  },
-                  child: Image.asset(
-                    "assets/logo_appbar.png",
-                    height: 50,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: 20,
+            maxHeight: 100,
+          ),
+          child: Container(
+            color: Theme.of(context).bottomAppBarColor.withOpacity(_opacity),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MaterialButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/');
+                    },
+                    child: Image.asset(
+                      "assets/logo_appbar.png",
+                      height: 50,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[1] = true
-                                : _isHovering[1] = false;
-                          });
-                        },
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/about');
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'About',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: _isHovering[1]
-                                    ? Colors.black
-                                    : Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[1],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: screenSize.width / 40),
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[0] = true
-                                : _isHovering[0] = false;
-                          });
-                        },
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/blog');
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 7.0,
-                              vertical: 5.0,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'Blog',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: _isHovering[0]
-                                        ? Colors.black
-                                        : Colors.white,
-                                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[1] = true
+                                  : _isHovering[1] = false;
+                            });
+                          },
+                          onTap: () {
+                            Navigator.of(context).pushNamed('/about');
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'About',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: _isHovering[1]
+                                      ? Colors.black
+                                      : Colors.white,
                                 ),
-                                SizedBox(height: 5),
-                                Visibility(
-                                  maintainAnimation: true,
-                                  maintainState: true,
-                                  maintainSize: true,
-                                  visible: _isHovering[0],
-                                  child: Container(
-                                    height: 2,
-                                    width: 20,
-                                    color: Colors.black,
+                              ),
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[1],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: screenSize.width / 40),
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[0] = true
+                                  : _isHovering[0] = false;
+                            });
+                          },
+                          onTap: () {
+                            Navigator.of(context).pushNamed('/blog');
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 7.0,
+                                vertical: 5.0,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'Blog',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color: _isHovering[0]
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
                                   ),
-                                )
-                              ],
+                                  SizedBox(height: 5),
+                                  Visibility(
+                                    maintainAnimation: true,
+                                    maintainState: true,
+                                    maintainSize: true,
+                                    visible: _isHovering[0],
+                                    child: Container(
+                                      height: 2,
+                                      width: 20,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: screenSize.width / 40),
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[2] = true
-                                : _isHovering[2] = false;
-                          });
-                        },
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/course');
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Courses',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: _isHovering[2]
-                                    ? Colors.black
-                                    : Colors.white,
+                        SizedBox(width: screenSize.width / 40),
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[2] = true
+                                  : _isHovering[2] = false;
+                            });
+                          },
+                          onTap: () {
+                            Navigator.of(context).pushNamed('/course');
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Courses',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: _isHovering[2]
+                                      ? Colors.black
+                                      : Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 5),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[2],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[2],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: screenSize.width / 40),
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[3] = true
-                                : _isHovering[3] = false;
-                          });
-                        },
-                        onTap: () {
-                          Navigator.of(context).pushNamed('/contact');
-                        },
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Contact',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: _isHovering[3]
-                                    ? Colors.black
-                                    : Colors.white,
+                        SizedBox(width: screenSize.width / 40),
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[3] = true
+                                  : _isHovering[3] = false;
+                            });
+                          },
+                          onTap: () {
+                            Navigator.of(context).pushNamed('/contact');
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Contact',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: _isHovering[3]
+                                      ? Colors.black
+                                      : Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 5),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[3],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[3],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: screenSize.width / 40),
-                    ],
+                        SizedBox(width: screenSize.width / 40),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

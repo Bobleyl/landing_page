@@ -96,8 +96,8 @@ class SocialInfo extends StatelessWidget {
           copyRightText(),
         ],
       ),
-      smallScreen: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      smallScreen: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           ...socialMediaWidgets(),
           copyRightText(),
