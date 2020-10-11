@@ -278,7 +278,8 @@ class BlogInfo extends StatelessWidget {
               SizedBox(
                 height: 10.0,
               ),
-              Image.asset('flutter_developer_infographic.png'),
+              Image.network(
+                  'https://miro.medium.com/max/1400/1*vf_MidTWVahlez0h27E8bQ.png'),
               SizedBox(
                 height: 10.0,
               ),

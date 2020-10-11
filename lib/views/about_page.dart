@@ -291,7 +291,8 @@ class AboutInfo extends StatelessWidget {
             shape: BoxShape.circle,
             image: DecorationImage(
               fit: BoxFit.fill,
-              image: NetworkImage('/assets/profile.jpg'),
+              image: NetworkImage(
+                  'https://www.bobleyl.com/assets/img/profile.jpg'),
             ),
           ),
         ),

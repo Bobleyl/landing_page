@@ -1,4 +1,6 @@
 import 'package:bleyldev_website/views/widgets/social_info.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -254,9 +256,16 @@ class _CoursePageState extends State<CoursePage> {
   }
 }
 
-class AboutInfo extends StatelessWidget {
-  const AboutInfo({Key key}) : super(key: key);
+class AboutInfo extends StatefulWidget {
+  AboutInfo({Key key}) : super(key: key);
 
+  @override
+  _AboutInfoState createState() => _AboutInfoState();
+}
+
+class _AboutInfoState extends State<AboutInfo> {
+  TextEditingController emailController = TextEditingController();
+  bool submittedEmail = false;
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -269,7 +278,7 @@ class AboutInfo extends StatelessWidget {
             color: Color(0xff8c53ff),
             borderRadius: BorderRadius.circular(15.0),
           ),
-          height: screenSize.height / 2,
+          height: screenSize.height / 1.7,
           width: 400,
           child: Stack(
             children: [
@@ -349,6 +358,41 @@ class AboutInfo extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 65.0),
+                    child: TextFormField(
+                      controller: emailController,
+                      cursorColor: Colors.white,
+                      style: GoogleFonts.lato(
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        focusColor: Colors.white,
+                        hoverColor: Colors.white,
+                        labelText: "Email",
+                        labelStyle: GoogleFonts.lato(
+                          color: Colors.white,
+                        ),
+                        hintText: "something@email.com",
+                        hintStyle: GoogleFonts.lato(
+                          color: Colors.white,
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        disabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
                     width: 250,
                     height: 65,
@@ -357,7 +401,22 @@ class AboutInfo extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await Firebase.initializeApp();
+                        FirebaseFirestore.instance
+                            .collection('Emails')
+                            .doc(emailController.text)
+                            .set({});
+                        emailController.text = "";
+                        setState(() {
+                          submittedEmail = true;
+                        });
+                        Future.delayed(const Duration(milliseconds: 5000), () {
+                          setState(() {
+                            submittedEmail = false;
+                          });
+                        });
+                      },
                       child: Center(
                         child: Text(
                           "Join Waitlist!",
@@ -370,6 +429,22 @@ class AboutInfo extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (submittedEmail)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: Text(
+                        "Thank you! We will email you when course is available.",
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.lato(
+                          color: Color(0xff00CD00),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                 ],
               ),
               Positioned(
