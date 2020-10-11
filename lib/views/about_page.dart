@@ -1,5 +1,6 @@
 import 'package:bleyldev_website/views/widgets/social_info.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../util/responsive_widget.dart';
 
@@ -267,14 +268,14 @@ class AboutInfo extends StatelessWidget {
           children: [
             Text(
               "Hi, I'm ",
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 32,
                 color: Colors.white,
               ),
             ),
             Text(
               "Bo!",
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -301,15 +302,15 @@ class AboutInfo extends StatelessWidget {
           Developers how to better their Flutter skills.  I’ve spent the last 8 
           years coding as well as teaching kids and adults alike how to code.
       
-          My long-term hope is that Bleyl Dev can grow to provide
-          free Flutter help to all!  In addition to my current Youtube videos I'm 
-          working on, I'm currently working on \"Flutter Jr\", a Flutter coding 
-          course that teaches kids how to code with Flutter and Dart.  If you want 
-          to get to know me more or need help with a Flutter project, please be 
-          sure to join our discord!  Connect with other developers and get quick 
-          Flutter help when you need it.  Link is in footer at bottom of webpage 😉
+          My long-term hope is that Bleyl Dev can grow to provide free Flutter 
+          help to all!  In addition to my current Youtube videos I'm working 
+          on, I'm currently working on \"Flutter Jr\", a Flutter coding course 
+          that teaches kids how to code with Flutter and Dart.  If you want to 
+          get to know me more or need help with a Flutter project, please be sure 
+          to join our discord!  Connect with other developers and get quick Flutter 
+          help when you need it.  Link is in footer at bottom of webpage 😉
           """,
-          style: TextStyle(
+          style: GoogleFonts.lato(
             fontSize: 20,
             color: Colors.white,
           ),
@@ -319,14 +320,14 @@ class AboutInfo extends StatelessWidget {
           children: [
             Text(
               "About ",
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 32,
                 color: Colors.white,
               ),
             ),
             Text(
               "Bleyl Dev",
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -342,16 +343,16 @@ class AboutInfo extends StatelessWidget {
         are struggling with and would like to see a video on it on our channel,
         please reach out via our \'Contact\' page and let us know!
         
-        Interested in being a part of the Bleyl Dev team? If you enjoy
-        teaching others and have a knack for video editing, we'd love to look at
-        your content and potentially post a video of yours on the channel.  Just 
+        Interested in being a part of the Bleyl Dev team? If you enjoy teaching 
+        others and have a knack for video editing, we'd love to look at your 
+        content and potentially post a video of yours on the channel.  Just 
         reach out and let us know you're interested.  
 
         Want to contribute and help others?  Join our discord or reach out to 
         potentially be a moderator and help out with handling Flutter and Dart
         related questions from the community.
         """,
-          style: TextStyle(
+          style: GoogleFonts.lato(
             fontSize: 20,
             color: Colors.white,
           ),

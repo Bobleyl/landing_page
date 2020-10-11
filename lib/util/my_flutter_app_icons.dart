@@ -20,6 +20,8 @@ class MyFlutterApp {
 
   static const IconData youtube_squared =
       IconData(0xf166, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mail_squared =
+      IconData(0xf199, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData medium =
       IconData(0xf23a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData github_squared =
