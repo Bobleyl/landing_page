@@ -234,7 +234,7 @@ class AboutInfo extends StatelessWidget {
             left: 15,
           ),
           child: Text(
-            "My long-term hope is that Bleyl Dev can grow to provide free Flutter help to all! In addition to my current Youtube videos I'm working on, I'm currently working on \"Flutter Jr\", a Flutter coding course that teaches kids how to code with Flutter and Dart. If you want to get to know me more or need help with a Flutter project, please be sure to join our discord! Connect with other developers and get quick Flutter help when you need it. Link is in footer at bottom of webpage 😉\n",
+            "My long-term hope is that Bleyl Dev can grow to provide free Flutter help to all! In addition to my current Youtube videos I'm working on, I'm currently working on \"Flutter Jr\", a Flutter coding course that teaches kids how to code with Flutter and Dart. If you want to get to know me more or need help with a Flutter project, please be sure to join our discord! Connect with other developers and get quick Flutter help when you need it. Link is in footer at bottom of webpage 🙂\n",
             style: GoogleFonts.lato(
               fontSize: 20,
               color: Colors.white,
