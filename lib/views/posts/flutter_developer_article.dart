@@ -2,16 +2,17 @@ import 'package:bleyldev_website/views/widgets/social_info.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../util/responsive_widget.dart';
+import '../../util/responsive_widget.dart';
 
-class BlogPage extends StatefulWidget {
-  BlogPage({Key key}) : super(key: key);
+class FlutterDeveloperArticle extends StatefulWidget {
+  FlutterDeveloperArticle({Key key}) : super(key: key);
 
   @override
-  _BlogPageState createState() => _BlogPageState();
+  _FlutterDeveloperArticleState createState() =>
+      _FlutterDeveloperArticleState();
 }
 
-class _BlogPageState extends State<BlogPage> {
+class _FlutterDeveloperArticleState extends State<FlutterDeveloperArticle> {
   List _isHovering = [false, false, false, false];
   ScrollController _scrollController;
   double _scrollPosition = 0;
@@ -104,50 +105,38 @@ class _BlogPageState extends State<BlogPage> {
                         onHover: (value) {
                           setState(() {
                             value
-                                ? _isHovering[0] = true
-                                : _isHovering[0] = false;
+                                ? _isHovering[1] = true
+                                : _isHovering[1] = false;
                           });
                         },
                         onTap: () {
                           Navigator.of(context).pushNamed('/blog');
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 7.0,
-                              vertical: 5.0,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Blog',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: _isHovering[1]
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
                             ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'Blog',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: _isHovering[0]
-                                        ? Colors.black
-                                        : Colors.white,
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Visibility(
-                                  maintainAnimation: true,
-                                  maintainState: true,
-                                  maintainSize: true,
-                                  visible: _isHovering[0],
-                                  child: Container(
-                                    height: 2,
-                                    width: 20,
-                                    color: Colors.black,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                            SizedBox(height: 5),
+                            Visibility(
+                              maintainAnimation: true,
+                              maintainState: true,
+                              maintainSize: true,
+                              visible: _isHovering[1],
+                              child: Container(
+                                height: 2,
+                                width: 20,
+                                color: Colors.black,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       SizedBox(width: screenSize.width / 20),
@@ -263,72 +252,100 @@ class BlogInfo extends StatelessWidget {
     final profileData = Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(height: screenSize.height / 6),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Color(0xff8c53ff),
-                borderRadius: BorderRadius.circular(15.0),
+        Container(
+          width: screenSize.width / 1.5,
+          child: Column(
+            children: [
+              SizedBox(height: screenSize.height / 6),
+              Text(
+                "What does a Flutter Developer Look Like in 2020?",
+                style: GoogleFonts.quicksand(
+                  color: Colors.white,
+                  fontSize: 55.0,
+                ),
+                textAlign: TextAlign.center,
               ),
-              height: screenSize.height / 3,
-              width: 300,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              SizedBox(
+                height: 30.0,
+              ),
+              Text(
+                "I’m always fascinated by trends and patterns in the industry and what they can tell us about where things are heading in the near future. I came across a neat infographic for Java developers highlighting the statistics of the industry and what made a Java developer in 2020 and wanted to do the same for Flutter! Here is my Flutter 2020 graphic of what makes a Flutter Developer! Please feel free to save the infographic and use it however you’d like.",
+                style: GoogleFonts.quicksand(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Image.asset('flutter_developer_infographic.png'),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                "Salary Note: The above-mentioned average is for US developers. For a more detailed report on salaries across the world see this link. I cannot verify the accuracy however of the reported salaries found in that study, only the US number.",
+                style: GoogleFonts.quicksand(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                ),
+              ),
+              SizedBox(
+                height: 50.0,
+              ),
+              Text(
+                "Most popular packages among Flutter Developers:",
+                style: GoogleFonts.quicksand(
+                  color: Colors.white,
+                  fontSize: 35.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                """   • http: https://pub.dev/packages/http
+   • shared_preferences: https://pub.dev/packages/shared_preferences
+   • provider: https://pub.dev/packages/provider
+   • rxdart: https://pub.dev/packages/rxdart
+   • cached_network_image: https://pub.dev/packages/cached_network_image
+   • animations: https://pub.dev/packages/animations""",
+                style: GoogleFonts.quicksand(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                ),
+              ),
+              SizedBox(
+                height: 50.0,
+              ),
+              Text(
+                "Countries using Flutter the most (the study bundled European Union into a single entity for results):",
+                style: GoogleFonts.quicksand(
+                  color: Colors.white,
+                  fontSize: 35.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Row(
                 children: [
                   Text(
-                    "What does a Flutter Developer Look Like in 2020?",
-                    style: GoogleFonts.lato(
-                      fontSize: 30,
+                    """         • India
+         • China
+         • United States
+         • EU
+         • Brazil""",
+                    style: GoogleFonts.quicksand(
                       color: Colors.white,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.0),
-                    child: Text(
-                      "I’m always fascinated by trends and patterns in the industry and what they can tell us about where things are heading in the near future. ",
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Container(
-                    width: 250,
-                    height: 65,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: MaterialButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed('/FlutterDeveloperArticle');
-                      },
-                      child: Center(
-                        child: Text(
-                          "Read Now",
-                          style: GoogleFonts.lato(
-                            fontSize: 24.0,
-                            color: Color(0xff8c53ff),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      fontSize: 30.0,
                     ),
                   ),
                 ],
-              ),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       ],
     );
