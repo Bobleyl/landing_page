@@ -1,3 +1,5 @@
+import 'package:bleyldev_website/views/posts/firebase_blog.dart';
+import 'package:bleyldev_website/views/posts/posts.dart';
 import 'package:bleyldev_website/views/widgets/explore_drawer.dart';
 import 'package:bleyldev_website/views/widgets/social_info.dart';
 import 'package:bleyldev_website/views/widgets/top_bar_contents.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../util/responsive_widget.dart';
+import 'posts/blog_article.dart';
 
 class BlogPage extends StatefulWidget {
   BlogPage({Key key}) : super(key: key);
@@ -70,64 +73,188 @@ class _BlogPageState extends State<BlogPage> {
   }
 }
 
-class BlogInfo extends StatelessWidget {
-  const BlogInfo({Key key}) : super(key: key);
+class BlogInfo extends StatefulWidget {
+  BlogInfo({Key key}) : super(key: key);
+
+  @override
+  _BlogInfoState createState() => _BlogInfoState();
+}
+
+class _BlogInfoState extends State<BlogInfo> {
+  List<Posts> posts = [Posts(title: "", seo: "", html: "")];
+  @override
+  void initState() {
+    getPost();
+  }
+
+  getPost() async {
+    posts = await getPosts();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    final profileData = Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(height: screenSize.height / 6),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Color(0xff8c53ff),
-                borderRadius: BorderRadius.circular(15.0),
+
+    final profileData = Container(
+      width: screenSize.width,
+      child: GridView.count(
+        crossAxisCount: 3,
+        childAspectRatio: .85,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 10.0,
+        shrinkWrap: true,
+        children: List.generate(
+          posts.length,
+          (index) {
+            return Padding(
+              padding: const EdgeInsets.all(10.0) +
+                  EdgeInsets.symmetric(
+                    horizontal: 30,
+                  ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff8c53ff),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20.0),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        posts[index].title,
+                        style: GoogleFonts.lato(
+                          color: Colors.white,
+                          fontSize: 35,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Divider(
+                          thickness: 3,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        posts[index].seo,
+                        style: GoogleFonts.lato(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
+                      ),
+                      Container(
+                        width: screenSize.width / 6,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: MaterialButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    BlogArticle(posts[index].html),
+                              ),
+                            );
+                          },
+                          child: Center(
+                            child: Text(
+                              "Read Now",
+                              style: GoogleFonts.lato(
+                                fontSize: 24.0,
+                                color: Color(0xff8c53ff),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              height: screenSize.height / 3,
-              width: 300,
+            );
+          },
+        ),
+      ),
+    );
+
+    final profileDataSmall = ListView.builder(
+      itemBuilder: (context, index) => Card(
+        color: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xff8c53ff),
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "What does a Flutter Developer Look Like in 2020?",
+                    posts[index].title,
                     style: GoogleFonts.lato(
-                      fontSize: 30,
                       color: Colors.white,
+                      fontSize: 35,
                     ),
-                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.0),
-                    child: Text(
-                      "I’m always fascinated by trends and patterns in the industry and what they can tell us about where things are heading in the near future. ",
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(
+                      thickness: 3,
+                      color: Colors.white,
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    posts[index].seo,
+                    style: GoogleFonts.lato(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 4,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
-                    width: 250,
-                    height: 65,
+                    width: screenSize.width / 2,
+                    height: 45,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: MaterialButton(
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed('/FlutterDeveloperArticle');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                BlogArticle(posts[index].html),
+                          ),
+                        );
                       },
                       child: Center(
                         child: Text(
@@ -144,9 +271,12 @@ class BlogInfo extends StatelessWidget {
                 ],
               ),
             ),
-          ],
+          ),
         ),
-      ],
+      ),
+      itemCount: posts.length,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
     );
 
     return ResponsiveWidget(
@@ -158,7 +288,7 @@ class BlogInfo extends StatelessWidget {
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[profileData],
+        children: <Widget>[profileDataSmall],
       ),
     );
   }

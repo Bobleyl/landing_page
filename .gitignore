@@ -35,6 +35,8 @@ bleyldev_website.iml
 .pub/
 /build/
 
+/lib/views/posts/firebase_blog.dart
+
 # Web related
 lib/generated_plugin_registrant.dart
 
