@@ -304,7 +304,7 @@ class BlogInfo extends StatelessWidget {
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[profileData],
+        children: <Widget>[profileDataSmall],
       ),
     );
   }
