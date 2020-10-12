@@ -89,10 +89,10 @@ class HomeInfo extends StatelessWidget {
           right: 75,
           bottom: 150,
           child: Container(
+            height: 85,
             decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(5.0),
-              border: Border.all(color: Colors.black),
+              color: Color(0xff8c53ff),
+              borderRadius: BorderRadius.circular(15.0),
             ),
             child: MaterialButton(
               onPressed: () {
@@ -103,10 +103,10 @@ class HomeInfo extends StatelessWidget {
               },
               child: Center(
                 child: Text(
-                  "Join the Bleyl Dev Community!",
+                  "Subscribe Now!",
                   style: GoogleFonts.lato(
                     color: Colors.white,
-                    fontSize: 35,
+                    fontSize: 45,
                   ),
                 ),
               ),
