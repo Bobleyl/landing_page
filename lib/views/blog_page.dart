@@ -81,7 +81,14 @@ class BlogInfo extends StatefulWidget {
 }
 
 class _BlogInfoState extends State<BlogInfo> {
-  List<Posts> posts = [Posts(title: "", seo: "", html: "")];
+  List<Posts> posts = [
+    Posts(
+        title: "",
+        seo: "",
+        html: "",
+        img:
+            "https://cdn.hashnode.com/res/hashnode/image/upload/v1598905085810/fy4TP6tWj.png")
+  ];
   @override
   // ignore: must_call_super
   void initState() {
@@ -115,7 +122,14 @@ class _BlogInfoState extends State<BlogInfo> {
                   ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xff8c53ff),
+                  image: DecorationImage(
+                    image: NetworkImage(posts[index].img),
+                    fit: BoxFit.fitHeight,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.6),
+                      BlendMode.darken,
+                    ),
+                  ),
                   borderRadius: BorderRadius.all(
                     Radius.circular(20.0),
                   ),
@@ -125,14 +139,23 @@ class _BlogInfoState extends State<BlogInfo> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        posts[index].title,
-                        style: GoogleFonts.lato(
-                          color: Colors.white,
-                          fontSize: 35,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 3,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              posts[index].title,
+                              style: GoogleFonts.lato(
+                                color: Colors.white,
+                                fontSize: 35,
+                                background: Paint()
+                                  ..color = Colors.black.withOpacity(.1),
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -141,14 +164,23 @@ class _BlogInfoState extends State<BlogInfo> {
                           color: Colors.white,
                         ),
                       ),
-                      Text(
-                        posts[index].seo,
-                        style: GoogleFonts.lato(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 4,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              posts[index].seo,
+                              style: GoogleFonts.lato(
+                                color: Colors.white,
+                                fontSize: 20,
+                                background: Paint()
+                                  ..color = Colors.black.withOpacity(.1),
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 4,
+                            ),
+                          ),
+                        ],
                       ),
                       Container(
                         width: screenSize.width / 6,
