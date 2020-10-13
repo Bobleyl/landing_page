@@ -107,6 +107,7 @@ class _BlogInfoState extends State<BlogInfo> {
     final profileData = Container(
       width: screenSize.width,
       child: GridView.count(
+        physics: NeverScrollableScrollPhysics(),
         crossAxisCount: 3,
         childAspectRatio: .85,
         crossAxisSpacing: 10.0,
@@ -151,7 +152,6 @@ class _BlogInfoState extends State<BlogInfo> {
                                 background: Paint()
                                   ..color = Colors.black.withOpacity(.1),
                               ),
-                              textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
                             ),
@@ -191,6 +191,7 @@ class _BlogInfoState extends State<BlogInfo> {
                           borderRadius: BorderRadius.circular(15.0),
                         ),
                         child: MaterialButton(
+                          hoverColor: Colors.black.withOpacity(.2),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -223,6 +224,7 @@ class _BlogInfoState extends State<BlogInfo> {
     );
 
     final profileDataSmall = ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => Card(
         color: Colors.transparent,
         child: Padding(
