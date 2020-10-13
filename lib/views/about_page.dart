@@ -53,17 +53,25 @@ class _AboutPageState extends State<AboutPage> {
               child: TopBarContents(_opacity),
             ),
       drawer: ExploreDrawer(),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        physics: ClampingScrollPhysics(),
-        child: Column(
-          children: [
-            AboutInfo(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.2,
-            ),
-            SocialInfo(),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fitWidth,
+            image: AssetImage("assets/backdrop2.png"),
+          ),
+        ),
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          physics: ClampingScrollPhysics(),
+          child: Column(
+            children: [
+              AboutInfo(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+              ),
+              SocialInfo(),
+            ],
+          ),
         ),
       ),
     );

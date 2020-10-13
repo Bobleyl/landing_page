@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   static const String route = '/home';
   @override
   Widget build(BuildContext context) {
+    precacheImage(AssetImage("assets/backdrop2.png"), context);
     return MaterialApp(
       title: 'Bleyl Dev',
       theme: ThemeData(

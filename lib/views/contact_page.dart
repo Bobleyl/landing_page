@@ -42,7 +42,6 @@ class _ContactPageState extends State<ContactPage> {
         : 1;
 
     return Scaffold(
-      backgroundColor: Color(0xff543199),
       extendBodyBehindAppBar: true,
       appBar: ResponsiveWidget.isSmallScreen(context)
           ? AppBar(
@@ -56,17 +55,25 @@ class _ContactPageState extends State<ContactPage> {
               child: TopBarContents(_opacity),
             ),
       drawer: ExploreDrawer(),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        physics: ClampingScrollPhysics(),
-        child: Column(
-          children: [
-            ContactInfo(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
-            ),
-            SocialInfo(),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fitWidth,
+            image: AssetImage("assets/backdrop2.png"),
+          ),
+        ),
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          physics: ClampingScrollPhysics(),
+          child: Column(
+            children: [
+              ContactInfo(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.15,
+              ),
+              SocialInfo(),
+            ],
+          ),
         ),
       ),
     );
