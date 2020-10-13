@@ -151,6 +151,7 @@ class _BlogInfoState extends State<BlogInfo> {
                                 background: Paint()
                                   ..color = Colors.black.withOpacity(.1),
                               ),
+                              textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
                             ),
@@ -228,7 +229,14 @@ class _BlogInfoState extends State<BlogInfo> {
           padding: const EdgeInsets.all(10.0),
           child: Container(
             decoration: BoxDecoration(
-              color: Color(0xff8c53ff),
+              image: DecorationImage(
+                image: NetworkImage(posts[index].img),
+                fit: BoxFit.fitHeight,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.6),
+                  BlendMode.darken,
+                ),
+              ),
               borderRadius: BorderRadius.all(
                 Radius.circular(20.0),
               ),
@@ -238,14 +246,24 @@ class _BlogInfoState extends State<BlogInfo> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    posts[index].title,
-                    style: GoogleFonts.lato(
-                      color: Colors.white,
-                      fontSize: 35,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          posts[index].title,
+                          style: GoogleFonts.lato(
+                            color: Colors.white,
+                            fontSize: 35,
+                            background: Paint()
+                              ..color = Colors.black.withOpacity(.1),
+                          ),
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 20,
@@ -260,14 +278,23 @@ class _BlogInfoState extends State<BlogInfo> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    posts[index].seo,
-                    style: GoogleFonts.lato(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 4,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          posts[index].seo,
+                          style: GoogleFonts.lato(
+                            color: Colors.white,
+                            fontSize: 16,
+                            background: Paint()
+                              ..color = Colors.black.withOpacity(.1),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 4,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 20,
