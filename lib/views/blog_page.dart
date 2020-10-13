@@ -60,7 +60,7 @@ class _BlogPageState extends State<BlogPage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fitWidth,
-            image: AssetImage("assets/backdrop2.png"),
+            image: AssetImage("assets/backdrop.png"),
           ),
         ),
         child: SingleChildScrollView(

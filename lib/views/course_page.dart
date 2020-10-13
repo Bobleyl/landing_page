@@ -58,7 +58,7 @@ class _CoursePageState extends State<CoursePage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fitWidth,
-            image: AssetImage("assets/backdrop2.png"),
+            image: AssetImage("assets/backdrop.png"),
           ),
         ),
         child: SingleChildScrollView(
