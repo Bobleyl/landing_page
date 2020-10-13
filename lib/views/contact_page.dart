@@ -90,7 +90,7 @@ class ContactInfo extends StatelessWidget {
                 color: Color(0xff8c53ff),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              height: screenSize.height / 3,
+              height: 325,
               width: 300,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -168,7 +168,7 @@ class ContactInfo extends StatelessWidget {
                 color: Color(0xff8c53ff),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              height: screenSize.height / 3,
+              height: 325,
               width: 300,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
