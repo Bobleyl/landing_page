@@ -522,7 +522,7 @@ class _AboutInfoState extends State<AboutInfo> {
                 color: Color(0xff8c53ff),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              height: screenSize.height / 1.7,
+              height: 450,
               width: 350,
               child: Stack(
                 children: [
@@ -726,7 +726,7 @@ class _AboutInfoState extends State<AboutInfo> {
                 color: Color(0xff8c53ff),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              height: screenSize.height / 1.7,
+              height: 450,
               width: 350,
               child: Stack(
                 children: [

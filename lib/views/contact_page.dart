@@ -315,7 +315,7 @@ class ContactInfo extends StatelessWidget {
                 color: Color(0xff8c53ff),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              height: screenSize.height / 3,
+              height: 350,
               width: 300,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -393,7 +393,7 @@ class ContactInfo extends StatelessWidget {
                 color: Color(0xff8c53ff),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              height: screenSize.height / 3,
+              height: 350,
               width: 300,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -475,15 +475,20 @@ class ContactInfo extends StatelessWidget {
           ],
         ),
         SizedBox(height: screenSize.height / 10),
-        Text(
-          "Other ways to get in touch",
-          style: GoogleFonts.lato(
-            fontSize: 36,
-            color: Colors.white,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Text(
+            "Other ways to get in touch",
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
+              fontSize: 36,
+              color: Colors.white,
+            ),
           ),
         ),
         SizedBox(height: screenSize.height / 20),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               iconSize: 100,
