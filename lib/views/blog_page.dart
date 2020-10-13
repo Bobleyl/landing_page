@@ -83,6 +83,7 @@ class BlogInfo extends StatefulWidget {
 class _BlogInfoState extends State<BlogInfo> {
   List<Posts> posts = [Posts(title: "", seo: "", html: "")];
   @override
+  // ignore: must_call_super
   void initState() {
     getPost();
   }
