@@ -3,6 +3,7 @@ import 'package:bleyldev_website/views/widgets/social_info.dart';
 import 'package:bleyldev_website/views/widgets/top_bar_contents.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import '../util/responsive_widget.dart';
 // ignore: avoid_web_libraries_in_flutter
@@ -68,8 +69,48 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomeInfo extends StatelessWidget {
-  const HomeInfo({Key key}) : super(key: key);
+class HomeInfo extends StatefulWidget {
+  HomeInfo({Key key}) : super(key: key);
+
+  @override
+  _HomeInfoState createState() => _HomeInfoState();
+}
+
+class _HomeInfoState extends State<HomeInfo> {
+  YoutubePlayerController _controller = YoutubePlayerController(
+    initialVideoId: 'yjJJxYn94S4',
+    params: YoutubePlayerParams(
+      startAt: Duration(seconds: 0),
+      showControls: true,
+      autoPlay: false,
+      showFullscreenButton: true,
+    ),
+  );
+  YoutubePlayerController _controller2 = YoutubePlayerController(
+    initialVideoId: 'At2A4MoIz6U',
+    params: YoutubePlayerParams(
+      startAt: Duration(seconds: 0),
+      showControls: true,
+      autoPlay: false,
+      showFullscreenButton: true,
+    ),
+  );
+  YoutubePlayerController _controller3 = YoutubePlayerController(
+    initialVideoId: 'R9B6DxVriwc',
+    params: YoutubePlayerParams(
+      startAt: Duration(seconds: 0),
+      showControls: true,
+      autoPlay: false,
+      showFullscreenButton: true,
+    ),
+  );
+
+  // ignore: must_call_super
+  void dispose() {
+    _controller.close();
+    _controller2.close();
+    _controller3.close();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +118,7 @@ class HomeInfo extends StatelessWidget {
     final profileData = Stack(
       children: [
         Container(
+          color: Color(0xff8c53ff),
           child: SizedBox(
             width: screenSize.width,
             child: Image.asset(
@@ -130,15 +172,47 @@ class HomeInfo extends StatelessWidget {
       ],
     );
 
+    final videos = Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.all(25),
+          child: Container(
+            width: screenSize.width / 1.2,
+            child: YoutubePlayerIFrame(
+              controller: _controller,
+              aspectRatio: 16 / 9,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(25),
+          child: Container(
+            width: screenSize.width / 1.2,
+            child: YoutubePlayerIFrame(
+              controller: _controller2,
+              aspectRatio: 16 / 9,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(25),
+          child: Container(
+            width: screenSize.width / 1.2,
+            child: YoutubePlayerIFrame(
+              controller: _controller3,
+              aspectRatio: 16 / 9,
+            ),
+          ),
+        ),
+      ],
+    );
+
     return ResponsiveWidget(
-      largeScreen: Row(
+      largeScreen: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           profileData,
-          Container(
-            height: 500,
-          )
         ],
       ),
       smallScreen: Column(
@@ -146,20 +220,10 @@ class HomeInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           profileDataSmall,
-          SizedBox(
-            height: 50,
-          ),
-          MaterialButton(
-            onPressed: () {
-              html.window.open(
-                "https://www.youtube.com/c/BleylDev?sub_confirmation=1",
-                "Youtube",
-              );
-            },
-            child: Image.asset("assets/youtube_panel.png"),
-          ),
-          SizedBox(
-            height: 50,
+          Container(
+            color: Color(0xff8c53ff),
+            width: screenSize.width,
+            child: videos,
           ),
         ],
       ),
