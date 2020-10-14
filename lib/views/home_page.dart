@@ -163,44 +163,10 @@ class _HomeInfoState extends State<HomeInfo> {
         Container(
           child: SizedBox(
             width: screenSize.width,
+            height: screenSize.height,
             child: Image.asset(
               'assets/home_banner_tall.png',
               fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ],
-    );
-
-    final videos = Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.all(25),
-          child: Container(
-            width: screenSize.width / 1.2,
-            child: YoutubePlayerIFrame(
-              controller: _controller,
-              aspectRatio: 16 / 9,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(25),
-          child: Container(
-            width: screenSize.width / 1.2,
-            child: YoutubePlayerIFrame(
-              controller: _controller2,
-              aspectRatio: 16 / 9,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(25),
-          child: Container(
-            width: screenSize.width / 1.2,
-            child: YoutubePlayerIFrame(
-              controller: _controller3,
-              aspectRatio: 16 / 9,
             ),
           ),
         ),
@@ -220,11 +186,6 @@ class _HomeInfoState extends State<HomeInfo> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           profileDataSmall,
-          Container(
-            color: Color(0xff8c53ff),
-            width: screenSize.width,
-            child: videos,
-          ),
         ],
       ),
     );
