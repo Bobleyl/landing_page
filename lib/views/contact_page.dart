@@ -150,8 +150,8 @@ class ContactInfo extends StatelessWidget {
                     child: MaterialButton(
                       onPressed: () {
                         html.window.open(
-                          "mailto:bleyldev@gmail.com",
-                          "Email",
+                          "https://discord.gg/aUQj87U",
+                          "Discord",
                         );
                       },
                       child: Center(
