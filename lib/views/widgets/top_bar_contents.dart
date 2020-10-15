@@ -49,45 +49,6 @@ class _TopBarContentsState extends State<TopBarContents> {
                       onHover: (value) {
                         setState(() {
                           value
-                              ? _isHovering[0] = true
-                              : _isHovering[0] = false;
-                        });
-                      },
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/about');
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'About',
-                            style: GoogleFonts.lato(
-                              fontSize: 25.0,
-                              color: _isHovering[0]
-                                  ? Color(0xff8c53ff)
-                                  : Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[0],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Color(0xff8c53ff),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: screenSize.width / 40),
-                    InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          value
                               ? _isHovering[1] = true
                               : _isHovering[1] = false;
                         });

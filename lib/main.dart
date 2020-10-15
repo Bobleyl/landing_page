@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'configure_nonweb.dart' if (dart.library.html) 'configure_web.dart';
 
 import 'views/about_page.dart';
 import 'views/blog_page.dart';
@@ -7,6 +8,7 @@ import 'views/course_page.dart';
 import 'views/home_page.dart';
 
 void main() {
+  configureApp();
   runApp(MyApp());
 }
 
