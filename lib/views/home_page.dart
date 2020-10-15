@@ -177,21 +177,19 @@ class _HomeInfoState extends State<HomeInfo> {
               ),
               SizedBox(height: screenSize.height / 50),
               Padding(
-                padding: EdgeInsets.only(right: 20),
+                padding: EdgeInsets.all(20.0),
                 child: Text(
-                  """          About Me: My name is Bo, I’m a Software Engineer and a Teacher of 
-          Flutter.  I manage a youtube channel called Bleyl Dev that teaches 
-          Developers how to better their Flutter skills.  I’ve spent the last 8 
-          years coding as well as teaching kids and adults alike how to code.
-      
-          My long-term hope is that Bleyl Dev can grow to provide free Flutter 
-          help to all!  In addition to my current Youtube videos I'm working 
-          on, I'm currently working on \"Flutter Jr\", a Flutter coding course 
-          that teaches kids how to code with Flutter and Dart.  If you want to 
-          get to know me more or need help with a Flutter project, please be sure 
-          to join our discord!  Connect with other developers and get quick Flutter 
-          help when you need it.  Link is in footer at bottom of webpage 😉
-          """,
+                  "About Me: My name is Bo, I’m a Software Engineer and a Teacher of Flutter. I manage a youtube channel called Bleyl Dev that teaches Developers how to better their Flutter skills. I’ve spent the last 8 years coding as well as teaching kids and adults alike how to code.",
+                  style: GoogleFonts.lato(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  "My long-term hope is that Bleyl Dev can grow to provide free Flutter help to all!  In addition to my current Youtube videos I'm working on, I'm currently working on \"Flutter Jr\", a Flutter coding course that teaches kids how to code with Flutter and Dart. If you want to get to know me more or need help with a Flutter project, please be sure to join our discord! Connect with other developers and get quick Flutter help when you need it. Link is in footer at bottom of webpage 🙂",
                   style: GoogleFonts.lato(
                     fontSize: 20,
                     color: Colors.white,
@@ -232,23 +230,29 @@ class _HomeInfoState extends State<HomeInfo> {
               ),
               SizedBox(height: screenSize.height / 50),
               Padding(
-                padding: EdgeInsets.only(right: 20),
+                padding: EdgeInsets.all(20.0),
                 child: Text(
-                  """        Bleyl Dev is a channel devoted to teaching Flutter.  Our goal is to 
-        provide weekly, quality flutter content.  If you aren't already subscribed
-        to the channel, be sure to do so now!  If you have any topics that you 
-        are struggling with and would like to see a video on it on our channel,
-        please reach out via our \'Contact\' page and let us know!
-        
-        Interested in being a part of the Bleyl Dev team? If you enjoy teaching 
-        others and have a knack for video editing, we'd love to look at your 
-        content and potentially post a video of yours on the channel.  Just 
-        reach out and let us know you're interested.  
-
-        Want to contribute and help others?  Join our discord or reach out to 
-        potentially be a moderator and help out with handling Flutter and Dart
-        related questions from the community.
-        """,
+                  "Bleyl Dev is a channel devoted to teaching Flutter. Our goal is to provide weekly, quality flutter content.  If you aren't already subscribed to the channel, be sure to do so now!  If you have any topics that you are struggling with and would like to see a video on it on our channel, please reach out via our \'Contact\' page and let us know!",
+                  style: GoogleFonts.lato(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  "Interested in being a part of the Bleyl Dev team? If you enjoy teaching others and have a knack for video editing, we'd love to look at your content and potentially post a video of yours on the channel. Just reach out and let us know you're interested.",
+                  style: GoogleFonts.lato(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  "Want to contribute and help others? Join our discord or reach out to potentially be a moderator and help out with handling Flutter and Dart related questions from the community.",
                   style: GoogleFonts.lato(
                     fontSize: 20,
                     color: Colors.white,
