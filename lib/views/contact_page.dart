@@ -192,7 +192,7 @@ class ContactInfo extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "\$35",
+                        "\$30",
                         style: GoogleFonts.lato(
                           fontSize: 60,
                           color: Colors.white,
