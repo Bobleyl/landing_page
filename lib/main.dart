@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'configure_nonweb.dart' if (dart.library.html) 'configure_web.dart';
 
-import 'views/about_page.dart';
 import 'views/blog_page.dart';
 import 'views/contact_page.dart';
 import 'views/course_page.dart';
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/home': (context) => HomePage(),
-        '/about': (context) => AboutPage(),
         '/blog': (context) => BlogPage(),
         '/course': (context) => CoursePage(),
         '/contact': (context) => ContactPage(),
