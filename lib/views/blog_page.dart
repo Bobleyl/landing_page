@@ -1,8 +1,6 @@
 import 'package:bleyldev_website/views/posts/firebase_blog.dart';
 import 'package:bleyldev_website/views/posts/posts.dart';
-import 'package:bleyldev_website/views/widgets/explore_drawer.dart';
-import 'package:bleyldev_website/views/widgets/social_info.dart';
-import 'package:bleyldev_website/views/widgets/top_bar_contents.dart';
+import 'package:bleyldev_website/views/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

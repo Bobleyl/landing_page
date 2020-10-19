@@ -1,6 +1,4 @@
-import 'package:bleyldev_website/views/widgets/explore_drawer.dart';
-import 'package:bleyldev_website/views/widgets/social_info.dart';
-import 'package:bleyldev_website/views/widgets/top_bar_contents.dart';
+import 'package:bleyldev_website/views/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
