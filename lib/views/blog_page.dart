@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../util/responsive_widget.dart';
-import 'posts/blog_article.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 class BlogPage extends StatefulWidget {
   BlogPage({Key key}) : super(key: key);
@@ -89,11 +90,12 @@ class BlogInfo extends StatefulWidget {
 class _BlogInfoState extends State<BlogInfo> {
   List<Posts> posts = [
     Posts(
-        title: "",
-        seo: "",
-        html: "",
-        img:
-            "https://cdn.hashnode.com/res/hashnode/image/upload/v1598905085810/fy4TP6tWj.png")
+      title: "",
+      seo: "",
+      html: "",
+      img: "",
+      url: "",
+    )
   ];
   @override
   // ignore: must_call_super
@@ -199,12 +201,9 @@ class _BlogInfoState extends State<BlogInfo> {
                         child: MaterialButton(
                           hoverColor: Colors.black.withOpacity(.2),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    BlogArticle(posts[index].html),
-                              ),
+                            html.window.open(
+                              posts[index].url,
+                              "Medium",
                             );
                           },
                           child: Center(
@@ -316,12 +315,9 @@ class _BlogInfoState extends State<BlogInfo> {
                     ),
                     child: MaterialButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                BlogArticle(posts[index].html),
-                          ),
+                        html.window.open(
+                          posts[index].url,
+                          "Medium",
                         );
                       },
                       child: Center(
