@@ -1,11 +1,11 @@
 {
-    "name": "bleyldev_website",
-    "short_name": "bleyldev_website",
+    "name": "Bleyl Dev",
+    "short_name": "Bleyl Dev",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Bleyl Dev website - Flutter Development and Content",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

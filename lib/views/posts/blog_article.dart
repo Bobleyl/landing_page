@@ -1,6 +1,7 @@
 import 'package:bleyldev_website/views/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../util/responsive_widget.dart';
@@ -94,20 +95,37 @@ class BlogInfo extends StatelessWidget {
         top: 100,
       ),
       child: Container(
+        color: Colors.black,
         width: screenSize.width / 1.4,
-        child: HtmlWidget(
-          htmlString,
-          textStyle: GoogleFonts.lato(
-            color: Colors.white,
-            fontSize: 20,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Html(
+            data: htmlString,
+            style: {
+              "p": Style(
+                fontFamily: GoogleFonts.lato().fontFamily,
+                color: Colors.white,
+                fontSize: FontSize.xLarge,
+              ),
+              "code": Style(
+                fontFamily: GoogleFonts.lato().fontFamily,
+                color: Colors.white,
+                backgroundColor: Colors.white.withOpacity(.1),
+              ),
+              "h1": Style(
+                fontFamily: GoogleFonts.lato().fontFamily,
+                color: Colors.white,
+                textAlign: TextAlign.center,
+                fontSize: FontSize.xxLarge,
+              ),
+              "h2": Style(
+                fontFamily: GoogleFonts.lato().fontFamily,
+                color: Colors.white,
+                textAlign: TextAlign.center,
+                fontSize: FontSize.xxLarge,
+              ),
+            },
           ),
-          customWidgetBuilder: (element) {
-            if (element.localName == "img") {
-              return Center(child: Image.network(element.attributes['src']));
-            }
-
-            return null;
-          },
         ),
       ),
     );
