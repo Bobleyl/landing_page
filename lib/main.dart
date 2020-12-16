@@ -21,12 +21,45 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         bottomAppBarColor: Color(0xff8c53ff),
       ),
-      initialRoute: '/',
-      routes: {
-        '/home': (context) => HomePage(),
-        '/blog': (context) => BlogPage(),
-        '/course': (context) => CoursePage(),
-        '/contact': (context) => ContactPage(),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case "/":
+            return PageRouteBuilder<dynamic>(
+              pageBuilder: (_, __, ___) => HomePage(),
+              settings: settings,
+            );
+
+            break;
+          case "/home":
+            return PageRouteBuilder<dynamic>(
+              pageBuilder: (_, __, ___) => HomePage(),
+              settings: settings,
+            );
+            break;
+          case "/blog":
+            return PageRouteBuilder<dynamic>(
+              pageBuilder: (_, __, ___) => BlogPage(),
+              settings: settings,
+            );
+            break;
+          case "/course":
+            return PageRouteBuilder<dynamic>(
+              pageBuilder: (_, __, ___) => CoursePage(),
+              settings: settings,
+            );
+            break;
+          case "/contact":
+            return PageRouteBuilder<dynamic>(
+              pageBuilder: (_, __, ___) => ContactPage(),
+              settings: settings,
+            );
+            break;
+          default:
+            return PageRouteBuilder<dynamic>(
+              pageBuilder: (_, __, ___) => HomePage(),
+              settings: settings,
+            );
+        }
       },
       debugShowCheckedModeBanner: false,
       home: HomePage(),

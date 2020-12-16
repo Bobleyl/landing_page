@@ -62,7 +62,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           Text(
                             'Blog',
                             style: GoogleFonts.lato(
-                              fontSize: 25.0,
+                              fontSize: 28.0,
                               color: _isHovering[1]
                                   ? Color(0xff8c53ff)
                                   : Colors.white,
@@ -101,7 +101,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           Text(
                             'Courses',
                             style: GoogleFonts.lato(
-                              fontSize: 25.0,
+                              fontSize: 28.0,
                               color: _isHovering[2]
                                   ? Color(0xff8c53ff)
                                   : Colors.white,
@@ -140,7 +140,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           Text(
                             'Contact',
                             style: GoogleFonts.lato(
-                              fontSize: 25.0,
+                              fontSize: 28.0,
                               color: _isHovering[3]
                                   ? Color(0xff8c53ff)
                                   : Colors.white,

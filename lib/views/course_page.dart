@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hover_effect/hover_effect.dart';
 
 import '../util/responsive_widget.dart';
 
@@ -103,415 +104,432 @@ class _AboutInfoState extends State<AboutInfo> {
         Row(
           children: [
             Container(
-              decoration: BoxDecoration(
-                color: Color(0xff8c53ff),
-                borderRadius: BorderRadius.circular(15.0),
-              ),
               height: 500,
               width: 400,
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+              child: HoverCard(
+                builder: (context, hovering) {
+                  return Stack(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/flutter_logo.png",
-                            height: 60,
-                          ),
-                          SizedBox(width: 20.0),
-                          Text(
-                            "Flutter Jr",
-                            style: GoogleFonts.lato(
-                              fontSize: 50,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "Learn Coding for Free!",
-                        style: GoogleFonts.lato(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      ),
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Image.asset(
+                                "assets/flutter_logo.png",
+                                height: 60,
+                              ),
+                              SizedBox(width: 20.0),
                               Text(
-                                "You will learn:",
+                                "Flutter Jr",
+                                style: GoogleFonts.lato(
+                                  fontSize: 50,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            "Learn Coding for Free!",
+                            style: GoogleFonts.lato(
+                              fontSize: 25,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "You will learn:",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: Text(
+                                  " - Basic Dart & Flutter                 ",
+                                  style: GoogleFonts.lato(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                " - Programming fundamentals",
                                 style: GoogleFonts.lato(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                " - Build real apps!                            ",
+                                style: GoogleFonts.lato(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                " - Suitable for ages 11+                ",
+                                style: GoogleFonts.lato(
+                                  fontSize: 20,
                                   color: Colors.white,
                                 ),
                               ),
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              " - Basic Dart & Flutter                 ",
+                            padding: EdgeInsets.symmetric(horizontal: 65.0),
+                            child: TextFormField(
+                              controller: emailController,
+                              cursorColor: Colors.white,
                               style: GoogleFonts.lato(
-                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                focusColor: Colors.white,
+                                hoverColor: Colors.white,
+                                labelText: "Email",
+                                labelStyle: GoogleFonts.lato(
+                                  color: Colors.white,
+                                ),
+                                hintText: "something@email.com",
+                                hintStyle: GoogleFonts.lato(
+                                  color: Colors.white,
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                disabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 250,
+                            height: 65,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: MaterialButton(
+                              onPressed: () async {
+                                await Firebase.initializeApp();
+                                FirebaseFirestore.instance
+                                    .collection('FlutterJrEmails')
+                                    .doc(emailController.text)
+                                    .set({});
+                                emailController.text = "";
+                                setState(() {
+                                  submittedEmail = true;
+                                });
+                                Future.delayed(
+                                    const Duration(milliseconds: 5000), () {
+                                  setState(() {
+                                    submittedEmail = false;
+                                  });
+                                });
+                              },
+                              child: Center(
+                                child: Text(
+                                  "Join Waitlist!",
+                                  style: GoogleFonts.lato(
+                                    fontSize: 24.0,
+                                    color: Color(0xff8c53ff),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          if (submittedEmail)
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: Text(
+                                "Thank you! We will email you when course is available.",
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.lato(
+                                  color: Color(0xff00CD00),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          width: 150,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Color(0xffb20000),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "COMING SOON!",
+                              style: GoogleFonts.lato(
                                 color: Colors.white,
                               ),
                             ),
                           ),
-                          Text(
-                            " - Programming fundamentals",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            " - Build real apps!                            ",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            " - Suitable for ages 11+                ",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 65.0),
-                        child: TextFormField(
-                          controller: emailController,
-                          cursorColor: Colors.white,
-                          style: GoogleFonts.lato(
-                            color: Colors.white,
-                          ),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusColor: Colors.white,
-                            hoverColor: Colors.white,
-                            labelText: "Email",
-                            labelStyle: GoogleFonts.lato(
-                              color: Colors.white,
-                            ),
-                            hintText: "something@email.com",
-                            hintStyle: GoogleFonts.lato(
-                              color: Colors.white,
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
                         ),
                       ),
-                      Container(
-                        width: 250,
-                        height: 65,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: MaterialButton(
-                          onPressed: () async {
-                            await Firebase.initializeApp();
-                            FirebaseFirestore.instance
-                                .collection('FlutterJrEmails')
-                                .doc(emailController.text)
-                                .set({});
-                            emailController.text = "";
-                            setState(() {
-                              submittedEmail = true;
-                            });
-                            Future.delayed(const Duration(milliseconds: 5000),
-                                () {
-                              setState(() {
-                                submittedEmail = false;
-                              });
-                            });
-                          },
-                          child: Center(
-                            child: Text(
-                              "Join Waitlist!",
-                              style: GoogleFonts.lato(
-                                fontSize: 24.0,
-                                color: Color(0xff8c53ff),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (submittedEmail)
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                          ),
-                          child: Text(
-                            "Thank you! We will email you when course is available.",
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                              color: Color(0xff00CD00),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
                     ],
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Container(
-                      width: 150,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Color(0xffb20000),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "COMING SOON!",
-                          style: GoogleFonts.lato(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  );
+                },
+                depth: 10,
+                depthColor: Color(0xff8c53ff),
+                onTap: () => print('Hello, World!'),
+                shadow: BoxShadow(
+                  color: Colors.purple[700],
+                  blurRadius: 30,
+                  spreadRadius: -20,
+                  offset: Offset(0, 40),
+                ),
               ),
             ),
             SizedBox(
               width: 15,
             ),
             Container(
-              decoration: BoxDecoration(
-                color: Color(0xff8c53ff),
-                borderRadius: BorderRadius.circular(15.0),
-              ),
               height: 500,
               width: 400,
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+              child: HoverCard(
+                builder: (context, hovering) {
+                  return Stack(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/flutter_logo.png",
-                            height: 60,
-                          ),
-                          SizedBox(width: 20.0),
-                          Text(
-                            "FlutterFire 101",
-                            style: GoogleFonts.lato(
-                              fontSize: 40,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "Learn Firebase Essentials!",
-                        style: GoogleFonts.lato(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      ),
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Image.asset(
+                                "assets/flutter_logo.png",
+                                height: 60,
+                              ),
+                              SizedBox(width: 20.0),
                               Text(
-                                "You will learn:",
+                                "FlutterFire 101",
+                                style: GoogleFonts.lato(
+                                  fontSize: 40,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            "Learn Firebase Essentials!",
+                            style: GoogleFonts.lato(
+                              fontSize: 25,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "You will learn:",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: Text(
+                                  " - Firebase Authentication        ",
+                                  style: GoogleFonts.lato(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                " - Firebase Firestore                     ",
                                 style: GoogleFonts.lato(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                " - Firebase Storage                        ",
+                                style: GoogleFonts.lato(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                " - Firebase Hosting                        ",
+                                style: GoogleFonts.lato(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                " - And More!                                     ",
+                                style: GoogleFonts.lato(
+                                  fontSize: 20,
                                   color: Colors.white,
                                 ),
                               ),
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              " - Firebase Authentication        ",
+                            padding: EdgeInsets.symmetric(horizontal: 65.0),
+                            child: TextFormField(
+                              controller: emailController2,
+                              cursorColor: Colors.white,
                               style: GoogleFonts.lato(
-                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                focusColor: Colors.white,
+                                hoverColor: Colors.white,
+                                labelText: "Email",
+                                labelStyle: GoogleFonts.lato(
+                                  color: Colors.white,
+                                ),
+                                hintText: "something@email.com",
+                                hintStyle: GoogleFonts.lato(
+                                  color: Colors.white,
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                disabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 250,
+                            height: 65,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: MaterialButton(
+                              onPressed: () async {
+                                await Firebase.initializeApp();
+                                FirebaseFirestore.instance
+                                    .collection('FlutterFireEmails')
+                                    .doc(emailController2.text)
+                                    .set({});
+                                emailController2.text = "";
+                                setState(() {
+                                  submittedEmail2 = true;
+                                });
+                                Future.delayed(
+                                    const Duration(milliseconds: 5000), () {
+                                  setState(() {
+                                    submittedEmail2 = false;
+                                  });
+                                });
+                              },
+                              child: Center(
+                                child: Text(
+                                  "Join Waitlist!",
+                                  style: GoogleFonts.lato(
+                                    fontSize: 24.0,
+                                    color: Color(0xff8c53ff),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          if (submittedEmail2)
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
+                              child: Text(
+                                "Thank you! We will email you when course is available.",
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.lato(
+                                  color: Color(0xff00CD00),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          width: 150,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Color(0xffb20000),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "PLANNED - 2021",
+                              style: GoogleFonts.lato(
                                 color: Colors.white,
                               ),
                             ),
                           ),
-                          Text(
-                            " - Firebase Firestore                     ",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            " - Firebase Storage                        ",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            " - Firebase Hosting                        ",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            " - And More!                                     ",
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 65.0),
-                        child: TextFormField(
-                          controller: emailController2,
-                          cursorColor: Colors.white,
-                          style: GoogleFonts.lato(
-                            color: Colors.white,
-                          ),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusColor: Colors.white,
-                            hoverColor: Colors.white,
-                            labelText: "Email",
-                            labelStyle: GoogleFonts.lato(
-                              color: Colors.white,
-                            ),
-                            hintText: "something@email.com",
-                            hintStyle: GoogleFonts.lato(
-                              color: Colors.white,
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
                         ),
                       ),
-                      Container(
-                        width: 250,
-                        height: 65,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: MaterialButton(
-                          onPressed: () async {
-                            await Firebase.initializeApp();
-                            FirebaseFirestore.instance
-                                .collection('FlutterFireEmails')
-                                .doc(emailController2.text)
-                                .set({});
-                            emailController2.text = "";
-                            setState(() {
-                              submittedEmail2 = true;
-                            });
-                            Future.delayed(const Duration(milliseconds: 5000),
-                                () {
-                              setState(() {
-                                submittedEmail2 = false;
-                              });
-                            });
-                          },
-                          child: Center(
-                            child: Text(
-                              "Join Waitlist!",
-                              style: GoogleFonts.lato(
-                                fontSize: 24.0,
-                                color: Color(0xff8c53ff),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (submittedEmail2)
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                          ),
-                          child: Text(
-                            "Thank you! We will email you when course is available.",
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                              color: Color(0xff00CD00),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
                     ],
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Container(
-                      width: 150,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Color(0xffb20000),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "PLANNED - 2021",
-                          style: GoogleFonts.lato(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  );
+                },
+                depth: 10,
+                depthColor: Color(0xff8c53ff),
+                shadow: BoxShadow(
+                  color: Colors.purple[700],
+                  blurRadius: 30,
+                  spreadRadius: -20,
+                  offset: Offset(0, 40),
+                ),
               ),
             ),
           ],
