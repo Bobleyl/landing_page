@@ -82,7 +82,7 @@ class _ExploreDrawerState extends State<ExploreDrawer> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    'Copyright © 2020 | Bleyl Dev',
+                    'Copyright © 2021 | Bleyl Dev',
                     style: TextStyle(
                       color: Colors.blueGrey[300],
                       fontSize: 14,

@@ -75,7 +75,7 @@ class SocialInfo extends StatelessWidget {
           right: 20,
         ),
         child: Text(
-          "Bleyl Dev ©️2020",
+          "Bleyl Dev ©️2021",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.grey,
